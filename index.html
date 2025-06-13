@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<!-- Enhanced Dynamic Coffee Website with Advanced Navbar -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪 | Premium Coffee Experience</title>
+    <!-- Linking Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="navbar-container">
+      <nav class="navbar">
+        <a href="#" class="nav-logo">
+          <h2 class="logo-text">☕𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪</h2>
+        </a>
+        
+        <!-- Dynamic Navigation Menu -->
+        <ul class="nav-menu" id="nav-menu">
+          <button id="menu-close-button" class="fas fa-times"></button>
+          <li class="nav-item">
+            <a href="#home" class="nav-link" data-section="home">
+              <i class="fas fa-home" style="color: rgb(0, 0, 0);"></i>
+              <span style="color: rgb(0, 0, 0);">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link" data-section="about">
+              <i class="fas fa-info-circle" style="color: rgb(0, 0, 0);"></i>
+              <span style="color: rgb(0, 0, 0);">About</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#menu" class="nav-link" data-section="menu">
+              <i class="fas fa-coffee" style="color: rgb(0, 0, 0);"></i>
+              <span style="color: rgb(0, 0, 0);">Menu</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#testimonials" class="nav-link" data-section="testimonials">
+              <i class="fas fa-star" style="color: rgb(0, 0, 0);"></i>
+              <span style="color: rgb(0, 0, 0);">Reviews</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#gallery" class="nav-link" data-section="gallery">
+              <i class="fas fa-images" style="color: rgb(0, 0, 0);"></i>
+              <span style="color: rgb(0, 0, 0);">Gallery</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link" data-section="contact">
+              <i class="fas fa-envelope" style="color: rgb(0, 0, 0);"></i>
+              <span  style="color: rgb(0, 0, 0);">Contact</span>
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Enhanced Cart Button with Animation -->
+        <div class="cart-container">
+          <button id="cart-button" class="cart-btn">
+            <i class="fas fa-shopping-cart cart-icon" style="color: rgb(0, 0, 0);"></i>
+            <span id="cart-count" class="cart-count">0</span>
+            <div class="cart-pulse"></div>
+          </button>
+        </div>
+        
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle-btn">
+          <i class="fas fa-moon" style="color: rgb(0, 0, 0);"></i>
+        </button>
+        
+        <button id="menu-open-button" class="fas fa-bars mobile-menu-btn"></button>
+      </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button id="close-cart" class="close-cart-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-content">
+        <div id="cart-items" class="cart-items">
+          
+          <!-- Cart items will be dynamically added here -->
+
+        </div>
+        <div class="cart-empty" id="cart-empty">
+          <div class="empty-cart-animation">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="empty-cart-bounce"></div>
+          </div>
+          <p>Your cart is empty</p>
+          <p>Add some delicious items to get started!</p>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="cart-subtotal">₹0.00</span>
+          </div>
+          <div class="total-row cart-final-total">
+            <span>Total:</span>
+            <span id="cart-total">₹0.00</span>
+          </div>
+        </div>
+        <button class="checkout-btn" id="checkout-btn">
+          <i class="fas fa-credit-card"></i>
+          <span>Proceed to Checkout</span>
+          <div class="checkout-btn-bg"></div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <!-- Notification System -->
+    <div id="notification" class="notification">
+      <div class="notification-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <span id="notification-text">Item added to cart!</span>
+      <button class="notification-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <main>
+      <!-- Hero section -->
+      <section class="hero-section" id="home">
+        <div class="hero-background">
+          <div class="hero-particle" style="--delay: 0s; --duration: 20s;"></div>
+          <div class="hero-particle" style="--delay: 5s; --duration: 25s;"></div>
+          <div class="hero-particle" style="--delay: 10s; --duration: 30s;"></div>
+        </div>
+        <div class="section-content">
+          <div class="hero-details">
+            <h2 class="title">ρяємιυм ¢σƒƒєє</h2>
+            <h3 class="subtitle">Elevate your day with our artisanal coffee experience!</h3>
+            <p class="description">Welcome to our ☕𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪, where every bean tells a story and every cup sparks joy. Discover the perfect blend of tradition and innovation." Ram Ram "</p>
+            <div class="buttons">
+              <a href="#menu" class="button order-now">
+                <i class="fas fa-coffee"></i>
+                <span>Order Now</span>
+                <div class="button-ripple"></div>
+              </a>
+              <a href="#contact" class="button contact-us">
+                <i class="fas fa-phone"></i>
+                <span>Contact Us</span>
+                <div class="button-ripple"></div>
+              </a>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-coffee-icon">
+              <div class="coffee-cup-animation">
+                <!-- <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="cupGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#8b4513;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="coffeeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#2c1810;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Coffee Cup -->
+                  <!-- <rect x="80" y="100" width="120" height="140" rx="10" fill="url(#cupGradient)" stroke="#8b4513" stroke-width="3"/>
+                  Coffee -->
+                  <!-- <rect x="90" y="110" width="100" height="100" rx="5" fill="url(#coffeeGradient)"/> -->
+                  <!-- Steam -->
+                  <!-- <path d="M 110 90 Q 115 80 110 70 Q 105 60 110 50" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M 130 95 Q 135 85 130 75 Q 125 65 130 55" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5">
+                    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M 150 90 Q 155 80 150 70 Q 145 60 150 50" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3.5s" repeatCount="indefinite"/>
+                  </path> -->
+                  <!-- Handle -->
+                  <!-- <path d="M 200 140 Q 230 140 230 170 Q 230 200 200 200" stroke="#d4a574" stroke-width="8" fill="none"/>
+                </svg> -->
+                <img src="images/coffee-hero-section.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About section -->
+      <section class="about-section" id="about">
+        <div class="section-content">
+          <div class="about-image-wrapper">
+            <div class="about-coffee-placeholder">
+              <div class="image-placeholder">
+                <!-- <i class="fas fa-coffee"></i> -->
+                 <img src="images/about-image.jpg" alt="">
+                <!-- <p>About Image Placeholder</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="about-details">
+            <h2 class="section-title">About Us</h2>
+            <p class="text">At ☕𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪 in jaipur, Bharat. We pride ourselves on being a go-to destination for coffee lovers and conversation seekers alike. We're dedicated to providing an exceptional coffee experience in a cozy and inviting atmosphere, where guests can relax, unwind, and enjoy their time in comfort.</p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <div class="stat-number" data-target="1500" style="color: rgb(0, 0, 0);">0</div>
+                <div class="stat-label">Happy Customers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="50" style="color: rgb(0, 0, 0);">0</div>
+                <div class="stat-label">Coffee Varieties</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="5" style="color: rgb(0, 0, 0);">0</div>
+                <div class="stat-label">Years of Excellence</div>
+              </div>
+            </div>
+            <div class="social-link-list" style="color: rgb(255, 255, 255);">
+              <!-- <a href="#" class="social-link" style="color: rgb(0, 0, 0);"><i class="fa-brands fa-facebook"></i></a> -->
+              <a href="https://www.instagram.com/abhi_shakya_2.0/?__pwa=1" class="social-link" ><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://x.com/Abhinandan_200" class="social-link" ><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/abhinandan-shakya/" class="social-link" ><i class="fab fa-linkedin" ></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu section -->
+      <section class="menu-section" id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-filter-buttons">
+          <button class="filter-btn active" data-filter="all" style="color: rgb(0, 0, 0);">All Items</button>
+          <button class="filter-btn" data-filter="hot-beverages" style="color: rgb(0, 0, 0);">Hot Drinks</button>
+          <button class="filter-btn" data-filter="cold-beverages" style="color: rgb(0, 0, 0);">Cold Drinks</button>
+          <button class="filter-btn" data-filter="food" style="color: rgb(0, 0, 0);">Food</button>
+        </div>
+        <div class="section-content" >
+          <ul class="menu-list">
+            <li class="menu-item" data-category="hot-beverages">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-mug-hot"></i> -->
+                 <img src="images/hot-beverages.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Premium hot beverages crafted with care</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Hot Beverages/Coffee</h3>
+                <p class="text">Wide range of steaming hot coffee to make you fresh and energized.</p>
+                <div class="price-section">
+                  <span class="price">₹349.99</span>
+                  <button class="add-to-cart-btn" data-name="Hot Beverages" data-price="4.99" data-category="hot-beverages">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);"></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" data-category="cold-beverages">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-glass-water"></i> -->
+                 <img src="images/cold-beverages.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Refreshing cold beverages for any season</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Cold Beverages/Coffee</h3>
+                <p class="text">Creamy and frothy cold coffee to refresh and cool you down.</p>
+                <div class="price-section">
+                  <span class="price">₹249.49</span>
+                  <button class="add-to-cart-btn" data-name="Cold Beverages" data-price="5.49" data-category="cold-beverages">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);" ></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" data-category="food">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-leaf"></i> -->
+                 <img src="images/refreshment.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Natural refreshments to revitalize your spirit</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Refreshment</h3>
+                <p class="text">Fruit and icy refreshing drinks to make you feel revitalized.</p>
+                <div class="price-section">
+                  <span class="price">₹300.99</span>
+                  <button class="add-to-cart-btn" data-name="Refreshment" data-price="3.99" data-category="refreshment">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);"></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" data-category="food">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-utensils"></i> -->
+                 <img src="images/special-combo.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Perfect combinations for great value</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Special Combos</h3>
+                <p class="text">Your favorite eating and drinking combinations at great value.</p>
+                <div class="price-section">
+                  <span class="price">₹800.99</span>
+                  <button class="add-to-cart-btn" data-name="Special Combos" data-price="8.99" data-category="special-combo">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);"></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" data-category="food">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-birthday-cake"></i> -->
+                 <img src="images/desserts.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Sweet treats to complete your experience</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Desserts</h3>
+                <p class="text">Satiate your palate and take you on a delightful culinary treat.</p>
+                <div class="price-section">
+                  <span class="price">₹600.49</span>
+                  <button class="add-to-cart-btn" data-name="Desserts" data-price="6.49" data-category="desserts">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);"></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item" data-category="food">
+              <div class="menu-image-placeholder">
+                <!-- <i class="fas fa-hamburger"></i> -->
+                 <img src="images/burger-frenchfries.png" alt="">
+                <div class="menu-item-overlay">
+                  <p>Satisfying quick bites with amazing flavors</p>
+                </div>
+              </div>
+              <div class="menu-details">
+                <h3 class="name">Burger & French Fries</h3>
+                <p class="text">Quick bites to satisfy your appetite with delicious flavors.</p>
+                <div class="price-section">
+                  <span class="price">₹400.99</span>
+                  <button class="add-to-cart-btn" data-name="Burger & French Fries" data-price="7.99" data-category="burger-fries">
+                    <i class="fas fa-cart-plus"  style="color: rgb(255, 248, 248);"></i>
+                    <span style="color: rgb(255, 248, 248);">Add to Cart</span>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Testimonials section -->
+      <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="section-content">
+          <div class="slider-container swiper">
+            <div class="slider-wrapper">
+              <ul class="testimonials-list swiper-wrapper">
+                <li class="testimonial swiper-slide">
+                  <div class="testimonial-content">
+                    <div class="user-avatar">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="name">Om Singh Rajawat</h3>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="feedback">"Loved the French roast. Perfectly balanced and rich. Will order again!"</blockquote>
+                  </div>
+                </li>
+                <li class="testimonial swiper-slide">
+                  <div class="testimonial-content">
+                    <div class="user-avatar">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="name">Aayush Mundotiya</h3>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="feedback">"Great espresso blend! Smooth and bold flavor. Fast shipping too!"</blockquote>
+                  </div>
+                </li>
+                <li class="testimonial swiper-slide">
+                  <div class="testimonial-content">
+                    <div class="user-avatar">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="name">Mayank Verma</h3>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="feedback">"Amazing atmosphere and even better coffee. Highly recommend!"</blockquote>
+                  </div>
+                </li>
+                <li class="testimonial swiper-slide">
+                  <div class="testimonial-content">
+                    <div class="user-avatar">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="name">Vishal Prasad</h3>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="feedback">"The best coffee shop in town! Love the cozy atmosphere."</blockquote>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery section -->
+      <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-content">
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img src="coffee-design.jpg" alt="art" >
+                <p>Coffee Art</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img src="coffe-cafe.jpg" alt="" >
+                <p>Our Cafe</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img src="coffe-beans.jpg" alt="">
+                <p>Fresh Beans</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img src="happy-customers.jpg" alt="">
+                <p>Happy Customers</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img src="BL_awards-2.jpg" alt="">
+                <p>Awards</p>
+              </div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-placeholder">
+                <img  src="made-with-love-pic.jpg" alt="" >
+                <p>Made with Love</p>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </section>
+
+      <!-- Contact section -->
+      <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Address</h3>
+                <p>Shop No. 5, Sanganer Thana, Jaipur, Rajasthan</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <p>+91 9026611627</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <p>abhinandanshakya171@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Hours</h3>
+                <p>Mon-Sun: 7:00 AM - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrapper">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required />
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <i class="fas fa-comment"></i>
+              </div>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                <span>𝓢𝓮𝓷𝓭 𝓜𝓮𝓼𝓼𝓪𝓰𝓮</span>
+                <div class="submit-btn-bg"></div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="section-content">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>☕𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪</h3>
+            <br>
+            <p>Your premium 𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪 since 2019. We serve excellence in every cup.</p>
+            <br>
+            <div class="social-links">
+              <!-- <a href="#" class="social-link"><i class="fab fa-facebook"></i></a> -->
+              <a href="https://www.instagram.com/abhi_shakya_2.0/?__pwa=1" class="social-link"><i class="fab fa-instagram"></i></a>
+              <a href="https://x.com/Abhinandan_200" class="social-link"><i class="fa-brands fa-x-twitter"></i></a> 
+             <a href="https://www.linkedin.com/in/abhinandan-shakya/" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <br>
+            <ul>
+              <li> <i class="fas fa-arrow-up-right-from-square"></i><a href="#home">  Home</a></li>
+              <li> <i class="fas fa-arrow-up-right-from-square"></i><a href="#about">  About</a></li>
+              <li> <i class="fas fa-arrow-up-right-from-square"></i><a href="#menu">  Menu</a></li>
+              <li> <i class="fas fa-arrow-up-right-from-square"></i><a href="#contact">  Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Contact Info</h4><br>
+            <p><i class="fas fa-map-marker-alt"></i>Shop No. 5, Sanganer Thana, Jaipur, Rajasthan</p>
+            <p><i class="fas fa-phone"></i> +91 9026611627</p>
+            <p><i class="fas fa-envelope"></i><a href="mailto:abhinandanshakya171@gmail.com">abc171@gmail.com</a> </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 𝓒𝓸𝓯𝓯𝓮𝓮 𝓐𝓭𝓭𝓪. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="coffee-loader">
+        <div class="coffee-cup">
+          <div class="coffee-steam"></div>
+          <div class="coffee-steam"></div>
+          <div class="coffee-steam"></div>
+        </div>
+        <p>Brewing your experience...</p>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
